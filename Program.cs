@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using static System.Console;
 
 namespace SocialSecurityNumber
 {
@@ -8,9 +7,23 @@ namespace SocialSecurityNumber
     {
         static void Main(string[] args)
         {
-            Write("Social Security Number (YYMMDD-XXXX): ");
+            string socialSecurityNumber;
+            
+            // Userinput through command.
+            if (args.Length > 0)
+            {
+                // If input from user is already done
+                Console.WriteLine($"You provided: {args[0]}");
+                socialSecurityNumber = args[0];
+            }
+            else
+            {
+                // Ask for input
+                Console.Write("Social Security Number (YYMMDD-XXXX): ");
+                socialSecurityNumber = Console.ReadLine();
 
-            string socialSecurityNumber = ReadLine();
+            }
+
             string gender;
 
             int genderNumber = int.Parse(socialSecurityNumber.Substring(socialSecurityNumber.Length - 2, 1));
@@ -28,7 +41,7 @@ namespace SocialSecurityNumber
                 age--;
             }
 
-            WriteLine($"{gender}, {age}");
+            Console.WriteLine($"{gender}, {age}");
         }
     }
 }
